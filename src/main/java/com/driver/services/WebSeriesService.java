@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 public class WebSeriesService {
 
     @Autowired
-    private WebSeriesRepository webSeriesRepository;
+    WebSeriesRepository webSeriesRepository;
 
     @Autowired
-    private ProductionHouseRepository productionHouseRepository;
+    ProductionHouseRepository productionHouseRepository;
 
     public Integer addWebSeries(WebSeriesEntryDto webSeriesEntryDto)throws  Exception{
 

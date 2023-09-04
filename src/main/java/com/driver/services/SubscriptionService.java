@@ -18,10 +18,10 @@ import java.util.List;
 public class SubscriptionService {
 
     @Autowired
-    private SubscriptionRepository subscriptionRepository;
+    SubscriptionRepository subscriptionRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
     public Integer buySubscription(SubscriptionEntryDto subscriptionEntryDto){
 

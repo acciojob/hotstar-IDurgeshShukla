@@ -16,10 +16,10 @@ import java.util.List;
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
     @Autowired
-    private WebSeriesRepository webSeriesRepository;
+    WebSeriesRepository webSeriesRepository;
 
 
     public Integer addUser(User user){
