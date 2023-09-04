@@ -37,7 +37,7 @@ public class SubscriptionService {
        } else if (subscriptionType.equals(SubscriptionType.PRO)) {
            totalAmountPaid = 800 + 250*(subscriptionEntryDto.getNoOfScreensRequired());
        } else {
-           totalAmountPaid = 1000 + 300*(subscriptionEntryDto.getNoOfScreensRequired());
+           totalAmountPaid = 1000 + 350*(subscriptionEntryDto.getNoOfScreensRequired());
        }
 
         Subscription subscription = new Subscription(subscriptionEntryDto.getSubscriptionType(),
@@ -65,7 +65,7 @@ public class SubscriptionService {
             subscription.setTotalAmountPaid(userHasToPay);
             user.setSubscription(subscription);
         } else if (subscriptionType.equals(SubscriptionType.PRO)){
-            int payment =  1000 + 300*subscription.getNoOfScreensSubscribed();
+            int payment =  1000 + 350*subscription.getNoOfScreensSubscribed();
             oldpayment = subscription.getTotalAmountPaid();
             userHasToPay = payment - oldpayment;
             subscription.setSubscriptionType(SubscriptionType.ELITE);
