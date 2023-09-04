@@ -31,7 +31,6 @@ public class WebSeriesService {
             webSeriesRepository.save(webSeries);
 
             ProductionHouse productionHouse = webSeries.getProductionHouse();
-            if (productionHouse == null) return 0;
             double ratings = productionHouse.getRatings();
             int currentSize = productionHouse.getWebSeriesList().size();
             double newRatings = (ratings*currentSize + webSeries.getRating())/(currentSize + 1);
