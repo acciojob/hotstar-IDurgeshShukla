@@ -25,21 +25,21 @@ public class WebSeriesService {
         //Incase the seriesName is already present in the Db throw Exception("Series is already present")
         WebSeries webSeries = webSeriesRepository.findBySeriesName(webSeriesEntryDto.getSeriesName());
         if (webSeries != null) throw  new Exception("Series is already present");
-        else
-        //use function written in Repository Layer for the same
-        //Dont forget to save the production and webseries Repo
-         webSeries = new WebSeries(webSeriesEntryDto.getSeriesName(),webSeriesEntryDto.getAgeLimit(),
-                webSeriesEntryDto.getRating(),webSeriesEntryDto.getSubscriptionType());
-        webSeries = webSeriesRepository.save(webSeries);
-        ProductionHouse productionHouse = webSeries.getProductionHouse();
+        else {
+            //use function written in Repository Layer for the same
+            //Dont forget to save the production and webseries Repo
+            webSeries = new WebSeries(webSeriesEntryDto.getSeriesName(), webSeriesEntryDto.getAgeLimit(),
+                    webSeriesEntryDto.getRating(), webSeriesEntryDto.getSubscriptionType());
+            webSeriesRepository.save(webSeries);
+            ProductionHouse productionHouse = webSeries.getProductionHouse();
 
-        double ratings = productionHouse.getRatings();
-        productionHouse.getWebSeriesList().add(webSeries);
-        double newRatings =
-                (ratings*(productionHouse.getWebSeriesList().size()-1) + webSeries.getRating())/productionHouse.getWebSeriesList().size();
-        productionHouse.setRatings(newRatings);
-        productionHouseRepository.save(productionHouse);
-        return (int)newRatings;
+            double ratings = productionHouse.getRatings();
+            int currentSize = productionHouse.getWebSeriesList().size();
+            double newRatings = (ratings*currentSize + webSeries.getRating())/currentSize + 1;
+            productionHouse.getWebSeriesList().add(webSeries);
+            productionHouse.setRatings(newRatings);
+            return (int) newRatings;
+        }
     }
 
 }
