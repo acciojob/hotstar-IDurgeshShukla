@@ -32,7 +32,9 @@ public class WebSeriesService {
                 webSeriesEntryDto.getRating(),webSeriesEntryDto.getSubscriptionType());
         webSeries = webSeriesRepository.save(webSeries);
         ProductionHouse productionHouse = webSeries.getProductionHouse();
+
         double ratings = productionHouse.getRatings();
+        productionHouse.getWebSeriesList().add(webSeries);
         double newRatings =
                 (ratings*(productionHouse.getWebSeriesList().size()-1) + webSeries.getRating())/productionHouse.getWebSeriesList().size();
         productionHouse.setRatings(newRatings);
