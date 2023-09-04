@@ -44,9 +44,9 @@ public class UserService {
                 SubscriptionType webseriesSubscription = webseries.getSubscriptionType();
                 if (userSubscription.equals(webseriesSubscription)){
                     countWebSeries++;
-                } else if (userSubscription == SubscriptionType.ELITE) {
+                } else if (userSubscription.equals(SubscriptionType.ELITE)) {
                     countWebSeries++;
-                } else if (userSubscription == SubscriptionType.PRO && webseriesSubscription == SubscriptionType.BASIC ) {
+                } else if (userSubscription.equals(SubscriptionType.PRO) && webseriesSubscription.equals(SubscriptionType.BASIC) ) {
                     countWebSeries++;
                 }
             }
